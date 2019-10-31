@@ -30,7 +30,7 @@ git checkout (branchname)
 上傳資料：
 
 ```
-git push -u origin branchname
+git push -u origin (branchname)
 ```
 
 
