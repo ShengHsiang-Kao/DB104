@@ -12,25 +12,27 @@ Crews| -10/31<br> |
 廖家禹 | crawler-卡優網 | 
 
 
-查看現有分支：
+
+
+###查看現有分支：
 
 ```
 git branch
 ```
 
-創建分支：
+###創建分支：
 
 ```
 git branch (branchname)
 ```
 
-切換分支：
+###切換分支：
 
 ```
 git checkout (branchname)
 ```
 
-上傳資料：
+###上傳資料：
 
 ```
 git push -u origin (branchname)
