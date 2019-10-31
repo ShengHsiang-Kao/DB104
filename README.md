@@ -27,8 +27,11 @@ git branch (branchname)
 git checkout (branchname)
 ```
 
-上傳資料:
-```git push -u origin branchname```
+上傳資料：
+
+```
+git push -u origin branchname
+```
 
 
 
