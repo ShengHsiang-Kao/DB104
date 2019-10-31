@@ -1,4 +1,9 @@
-# How to get started?
+#  到自己的目錄git
 
-## 1.yum -y update
+```
+git clone https://github.com/ShengHsiang-Kao/DB104.git
+```
+
+## 建立自己的分支
+git branch 
 
