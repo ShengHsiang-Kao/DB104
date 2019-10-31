@@ -1,7 +1,7 @@
 ## credit cards bot
 
 ## Task:
-Crews| -10/31<br> |
+Crews| -11/2 |
 ------|-------|
 高聖翔 | -crawler-新聞 | 
 黃郁豪 | crawler-youtube | 
