@@ -1,0 +1,9 @@
+【微碧 iPad POS】聯合信用卡處理中心刷卡機連線設定
+1.準備聯合信用卡處理中心裝機人員提供的「末端機服務作業單」及要連線的iPad。
+2.設定前請將「微碧智慧店面」app更新為3.8.4以上的版本。
+3.更新完後，開啟「微碧智慧店面」app進行設定。
+
+LINE@線上客服：https://weiby.tw/LINE
+官網：https://weiby.tw
+Facebook：https://www.facebook.com/WeibyApps/
+官方部落格：https://weibyapps.wordpress.com

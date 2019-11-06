@@ -1,0 +1,6 @@
+无需信用卡、无需手机号，利用亚马逊云免费一次搭建V2RAY及brook两个科学上网服务器，实现高速、免费科学上网
+本视频利用GitHub学生包中亚马逊教育AWseducate的云服务器，创建brook服务器和v2ray服务器，实现一台云服务器搭建两个科学上网环境。真正实现无需信用卡、无需手机号搭建高速免费的科学上网服务器。
+服务器部署代码：https://docs.google.com/document/d/1w...
+GitHub学生申请教程：https://youtu.be/ooDDP4uL-PU
+
+我的电报群：https://t.me/joinchat/HGd_yRAf-b8ibGw...

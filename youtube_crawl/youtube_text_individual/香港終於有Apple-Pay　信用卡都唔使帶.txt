@@ -1,0 +1,17 @@
+香港終於有Apple Pay　信用卡都唔使帶
+上個月蘋果於WWDC上，已經宣布將會在香港推出Apple Pay，今日終於正式開通，首先在Wallet內，加入信用卡資料，然後就可以用iPhone或Apple Watch俾錢。簡單講一講用法，付款時，將手機或Apple Watch放埋感應器，就可以即時過數，其實同八達通差不多。
+
+保安方面，如果用iPhone俾錢，需要同時用指紋確認，過程其實只需一秒左右就搞掂，就算唔見部iPhone，用「尋找我的 iPhone」，設定「遺失模式」，就即時停止Apple Pay。
+
+Apple Watch的話，每次帶錶上手，都要輸入密碼，俾錢時㩒兩下錶側按鈕，就即時啟動Apple Pay，之後一嘟就得，而每次將錶除低之後，都要再輸入密碼先開到Apple Pay，即是話，跌咗隻錶就會自動上鎖，唔驚俾人狂碌卡。
+
+而iPhone最多可儲存八張信用卡資料，而Apple Watch就可儲存最多八張信用卡資料，目前由AE、東亞、中銀、星展、恒生、滙豐及渣打所發的VISA、MasterCard同AE卡，已經支援Apple Pay。
+
+而商戶方面，不少大型連鎖店都已經開通，例如麥當勞、KFC、美心快餐、萬寧、元氣壽司、Pacific Coffee、Starbucks、惠康及Pizza Hut等。
+
+詳細資料：http://www.apple.com/hk/apple-pay/
+
+撰文、攝錄：劉耀祥
+
+壹週Plus : http://hk.next.nextmedia.com
+即 like 壹週Plus fb : http://www.facebook.com/nextmagazinef...

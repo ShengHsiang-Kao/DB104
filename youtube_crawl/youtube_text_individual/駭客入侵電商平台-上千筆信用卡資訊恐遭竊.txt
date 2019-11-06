@@ -1,0 +1,11 @@
+駭客入侵電商平台 上千筆信用卡資訊恐遭竊
+近期一項新的研究指出線上購物平台已遭駭客入侵。駭客鎖定了美國電商Volusion，Volusion是間軟體公司且擁有許多網路商店，駭客進入該電商的網頁竊取客戶的信用卡資訊。新聞網ZDNet引述了Check Point and Trend Micro的研究，駭客先駭進電商的Google 雲端基礎架構，再植入惡意Javascript碼到公司的伺服器。惡意程式碼可以搜集顧客在網站上所輸入的信用卡詳細資訊，並藉此竊取顧客的信用卡資訊。數位安全公司RiskIQ在官網說明，這類型針對信用卡的攻擊稱為「Magecart」。一位Check Point的研究人員也在Medium部落格發表一篇文章，他表示已有超過6500家網路商店受影響，連知名的Sesame Street Live也淪陷。去年Volusion曾發布一篇新聞稿，當中提到該網站擁有超過3萬間網路商店，也是第一個使用Google雲端平台作為電子商務用途的公司。根據ZDNet報導目前Volusion尚未移除伺服器的惡意程式碼。
+
+#駭客入侵 #信用卡資訊 #電商平台 #盜竊信用卡
+訂閱 TomoNews ►► http://bit.ly/Subscribe-to-TomoNewsTW
+
+TomoNews是你最佳新聞來源。我們專報最有趣、最瘋狂、最具話題性的網路發燒新聞。我們的語調貼近觀眾心情，跟你一起開懷大笑、或火冒三丈。我們秉持桀敖不馴，理直氣壯的態度，事實是什麼，我們就怎麼報。加上強大的3D動畫演示現場，TomoNews的新聞絕對是你在別處看不到的。
+
+別忘了到Facebook幫我們按讚喔! http://www.facebook.com/TomoNewsTW
+First
+1

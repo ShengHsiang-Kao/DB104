@@ -1,0 +1,4 @@
+Offline Payment / 离线刷信用卡
+MCPOS Chinese tutorial / MCPOS 中文培训
+How to process offline credit card payments.
+如何使用离线刷卡功能。

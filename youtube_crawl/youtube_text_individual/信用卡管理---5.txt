@@ -1,0 +1,16 @@
+信用卡管理 - 5
+這套是HandWallet開支管理程序的部份視頻教程。HandWallet是免費的手機應用程序（提供中文版本），您可以隨時隨地通過HandWallet來計劃、管理您的開支。您可以通過以下鏈接下載使用
+https://play.google.com/store/apps/de...
+
+您现在看到的是信用卡账户的详细信息界面，请选择"高级"选项。现在，您可以设定信用卡类型：Visa，MasterCard，American Express等等。您也可以输入信用卡卡号以及有效日期，但当然也可以省略。只是想让您知道，您在数据库中的所有信息都经过加密，非常安全。
+
+通过这个界面，您可以设立什么时间以及怎样支付您的信用卡公司。我们管它叫做"信用卡政策"，天啊，真是复杂，但这年头找到简单东西不容易。但其实，这还蛮容易，创建一个信用卡政策其实就是创建信用卡的宽限期、还款期以及其他信息而已。
+
+因为这些数据随着时间而发生改变，那您就需要及时创建一个新的"信用卡政策"。比如，如果还款日期改变，从改变那天起创建一个新的政策。
+
+默认设置的"信用卡政策"是"手动的"，也就是说HandWallet是不会计算那些由信用卡统计数来的数据的。因此，您必须在还款日通过手动添加一个交易，将钱由另外一个账号转移到信用卡账号。我建议您将政策转为"自动"，这样HandWallet就将自动为您完成这些工作。您只需要点击政策键附近的小按钮，选择"编辑"就可以了。
+
+For more information visit the HandWallet Expense Manager site:
+http://www.handwallet.com
+or the HandWallet Expense Manager forum:
+http://www.handforum.com
