@@ -1,4 +1,9 @@
-bank={'中信':'中信','中國信託':'中信' ,'玉山':'玉山','Richart':'Richart', 'richart':'Richart','KOKO':'KOKO','koko':'KOKO',
+#增加字詞規則
+#例:中信這個銀行會出現 '中信', '中國信託' '中信銀'
+#則dictionary 增加 '中信':'中信','中國信託':'中信' ,'中信銀':'中信' 3個dict, key不同,value皆為'中信'  
+
+
+bank={'中信':'中信','中國信託':'中信''中信銀':'中信' ,'玉山':'玉山','Richart':'Richart', 'richart':'Richart','KOKO':'KOKO','koko':'KOKO',
        '國泰':'國泰','國泰世華':'國泰','台新':'台新','永豐':'永豐','兆豐':'兆豐'}
 	   
 card={'linepay':'Linepay','Linepay':'Linepay','LinePay':'Linepay','LINEPAY':'Linepay','GOGO':'GOGO','gogo':'GOGO',
