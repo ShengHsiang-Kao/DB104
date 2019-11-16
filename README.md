@@ -38,7 +38,11 @@ git checkout (branchname)
 git push -u origin (branchname)
 ```
 
+### 下載分支資料：
 
+```
+git pull -u origin (branchname)
+```
 
 
 
