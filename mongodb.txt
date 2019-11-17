@@ -1,0 +1,63 @@
+import pandas as pd
+import json
+import re
+import pymongo
+
+#連接 mongodb
+
+client = pymongo.MongoClient(host='IP', port=27017)
+
+
+---
+#mongodb帳號密碼
+
+client.admin.authenticate('user', 'password')
+
+
+
+---
+#設定名稱為test的資料庫 也可用 db = client['test']
+
+db = client.test
+
+
+---
+#設定名稱為creditcard的collection  也可用coll = db['creditcard']
+
+coll = db.creditcard
+
+
+---
+#讀json檔為dataframe格式
+
+df = pd.read_json('信用卡(簡).json',typ='frame',orient='index')
+
+#以名稱為ID的列排序
+
+df = df.sort_values(by='ID')
+
+---
+#將dataframe轉成能存入mongodb的json格式
+
+data = json.loads(df.T.to_json()).values()
+
+
+---
+#將資料存入mongodb
+
+coll.insert_many(data)
+
+---
+#讀取mongodb中的資料
+mondata = coll.find()
+
+---
+#將資料轉成dataframe的格式 coll.find()取出資料格式為cursor加上list()即可讀
+
+dt = pd.DataFrame(list(mondata))
+
+
+---
+#取消dataframe名稱為_id的列
+
+del dt['_id']
