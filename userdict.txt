@@ -2,6 +2,7 @@
 pi錢包
 數位帳戶
 linepay
+Linepay
 電子錢包
 實支實付
 現金回饋
@@ -29,4 +30,3 @@ PI錢包
 Ubear
 GOGO
 玉山wallet
-玉山Wallet
