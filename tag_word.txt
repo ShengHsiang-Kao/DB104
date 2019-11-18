@@ -11,18 +11,19 @@ bank={'中信':'中信','中國信託':'中信' ,
 '兆豐':'兆豐'}
 
 card={
-'linepay':'LINEPay卡','Linepay':'LINEPay卡','LinePay':'LINEPay卡','LINEPAY':'LINEPay卡','LINE PAY':'LINEPay卡','Line pay':'LINEPay卡',
-'line pay':'LINEPay卡',
-'GOGO':'GOGO','gogo':'GOGO','黑狗':'GOGO','黑狗卡':'GOGO','gogo卡':'GOGO','GOGO卡':'GOGO','Gogo卡':'GOGO','Gogo':'GOGO',
+'linepay':'LINEPay','Linepay':'LINEPay','LinePay':'LINEPay','LINEPAY':'LINEPay','LINE PAY':'LINEPay','Line pay':'LINEPay',
+'line pay':'LINEPay',
+'GOGO':'GoGo','gogo':'GoGo','黑狗':'GoGo','黑狗卡':'GoGo','gogo卡':'GoGo','GOGO卡':'GoGo','Gogo卡':'GoGo','Gogo':'GoGo','GoGo':'GoGo',
 'flygo':'Flygo','Flygo':'Flygo','FLYGO':'Flygo','飛狗':'Flygo','飛狗卡':'Flygo',
 '大戶':'dawho','dawho':'dawho','Dawho':'dawho',
 'PI':'Pi','Pi':'Pi','pi卡':'Pi','PI卡':'Pi',
 'ubear':'Ubear','UBEAR':'Ubear','Ubear':'Ubear','ubear':'Ubear','u bear':'Ubear','U bear':'Ubear','u bear':'Ubear', 'Ubear卡':'Ubear',
 'only':'Only','ONLY':'Only','Only':'Only',
-'賴點':'賴點','賴點卡':'賴點', 
-'酷玩卡':'酷玩卡',
+'賴點':'賴點','賴點':'賴點', 
+'酷玩卡':'酷玩','酷玩卡':'酷玩',
 '饗樂':'饗樂','饗樂卡':'饗樂',
-'koko':'KOKO','KOKO':'KOKO'
+'koko':'KOKO','KOKO':'KOKO','KoKo':'KOKO',
+'星燦':'星燦','星燦卡':'星燦'
 }
 
 behavior={
@@ -36,5 +37,5 @@ behavior={
 '行動支付':'行動支付','PI錢包':'行動支付','pi錢包':'行動支付','街口':'行動支付','Pi錢包':'行動支付',
 '新光三越':'百貨','SOGO':'百貨','sogo':'百貨','遠百':'百貨','遠東百貨':'百貨',
 '紅利':'紅利','紅利點數':'紅利','紅利兌換':'紅利',
-'超商':'超商','7-11':'超商','全家':'超商','全家便利':'超商',
+'超商':'超商','7-11':'超商','全家':'超商','全家便利':'超商','萊爾富':'超商','OK便利':'超商',
 }
