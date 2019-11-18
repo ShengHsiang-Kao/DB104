@@ -11,15 +11,15 @@ bank={'中信':'中信','中國信託':'中信' ,
 '兆豐':'兆豐'}
 
 card={
-'linepay':'Linepay','Linepay':'Linepay','LinePay':'Linepay','LINEPAY':'Linepay','LINE PAY':'Linepay','Line pay':'Linepay',
-'line pay':'Linepay',
+'linepay':'LINEPay卡','Linepay':'LINEPay卡','LinePay':'LINEPay卡','LINEPAY':'LINEPay卡','LINE PAY':'LINEPay卡','Line pay':'LINEPay卡',
+'line pay':'LINEPay卡',
 'GOGO':'GOGO','gogo':'GOGO','黑狗':'GOGO','黑狗卡':'GOGO','gogo卡':'GOGO','GOGO卡':'GOGO','Gogo卡':'GOGO','Gogo':'GOGO',
 'flygo':'Flygo','Flygo':'Flygo','FLYGO':'Flygo','飛狗':'Flygo','飛狗卡':'Flygo',
 '大戶':'dawho','dawho':'dawho','Dawho':'dawho',
 'PI':'Pi','Pi':'Pi','pi卡':'Pi','PI卡':'Pi',
 'ubear':'Ubear','UBEAR':'Ubear','Ubear':'Ubear','ubear':'Ubear','u bear':'Ubear','U bear':'Ubear','u bear':'Ubear', 'Ubear卡':'Ubear',
 'only':'Only','ONLY':'Only','Only':'Only',
-'賴點':'賴點' ,'賴點卡':'賴點', 
+'賴點':'賴點','賴點卡':'賴點', 
 '酷玩卡':'酷玩卡',
 '饗樂':'饗樂','饗樂卡':'饗樂',
 'koko':'KOKO','KOKO':'KOKO'
