@@ -34,11 +34,11 @@ card={
 'PI':'Pi','Pi':'Pi','pi卡':'Pi','PI卡':'Pi',
 'ubear':'Ubear','UBEAR':'Ubear','Ubear':'Ubear','ubear':'Ubear','u bear':'Ubear','U bear':'Ubear','u bear':'Ubear', 'Ubear卡':'Ubear','U Bear':'Ubear',
 'only':'Only','ONLY':'Only','Only':'Only',
-'賴點':'賴點','賴點':'賴點', 
-'酷玩卡':'酷玩','酷玩卡':'酷玩',
-'饗樂':'饗樂','饗樂卡':'饗樂',
+'賴點':'賴點卡','賴點卡':'賴點卡', 
+'酷玩卡':'酷玩卡','酷玩卡':'酷玩卡',
+'饗樂':'饗樂卡','饗樂卡':'饗樂卡',
 'koko':'KOKO','KOKO':'KOKO','KoKo':'KOKO',
-'星燦':'星燦','星燦卡':'星燦',
+'星燦':'星燦卡','星燦卡':'星燦卡',
 '統一獅':'統一獅聯名卡',
 '中信兄弟':'中信兄弟聯名卡',
 '富邦悍將':'富邦悍將聯名卡',
@@ -55,7 +55,9 @@ card={
 'SPORT卡':'SPORT卡',
 'e秒刷鈦金卡':'e秒刷鈦金卡','e秒刷':'e秒刷鈦金卡',
 '小小兵':'小小兵','小小兵':'小小兵信用卡',
-'everyday鈦金卡':'everyday鈦金卡','everyday':'everyday鈦金卡'
+'everyday鈦金卡':'everyday鈦金卡','everyday':'everyday鈦金卡',
+'街口聯名卡':'街口聯名卡',
+'Gogoro聯名卡':'Gogoro聯名卡','Gogoro':'Gogoro聯名卡','gogoro':'Gogoro聯名卡'
 }
 
 behavior={
