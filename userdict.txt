@@ -134,6 +134,7 @@ lamigo
 SPORT卡
 e秒刷鈦金卡
 e秒刷
+小小兵信用卡
 小小兵
 everyday鈦金卡
 everyday
@@ -141,12 +142,11 @@ everyday
 Gogoro聯名卡
 Gogoro
 gogoro
-OMIYAGE
 簡單卡
 數位生活
 美國運通
 法拉利
-小小兵信用卡
+OMIYAGE
 南開科技大學認同卡
 聯邦OTA手機信用卡
 魔法少女iPASS一卡通聯名卡
@@ -484,6 +484,7 @@ richart
 兆豐銀行
 花旗
 花旗銀
+花旗銀行
 一銀
 第一銀
 第一金
@@ -517,11 +518,14 @@ richart
 星展
 星展銀行
 星展銀
+DBS
+dbs
 渣打
 渣打銀行
 渣打銀
 上海商銀
 上海銀行
+上海商業
 華南
 華南銀行
 華南金控
@@ -535,6 +539,8 @@ richart
 王道銀行
 澳盛
 澳盛銀行
+ANZ
+anz
 遠東商銀
 遠銀
 遠東銀
