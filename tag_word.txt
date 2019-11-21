@@ -80,7 +80,7 @@ card={
 '炫晶御璽卡':'炫晶御璽卡','炫晶卡':'炫晶御璽卡','炫晶':'炫晶御璽卡',
 '現金回饋御璽卡':'現金回饋御璽卡',
 'PChome Prime聯名卡':'PChome Prime聯名卡','Prime聯名卡':'PChome Prime聯名卡','Prime':'PChome Prime聯名卡','rime':'PChome Prime聯名卡',
-'蝦皮購物聯名卡':'蝦皮購物聯名卡','蝦皮聯名':'蝦皮購物聯名卡',
+'購物聯名卡':'蝦皮購物聯名卡','蝦皮聯名':'蝦皮購物聯名卡','蝦皮卡':'蝦皮購物聯名卡','國泰世華蝦皮卡':'蝦皮購物聯名卡',
 'Lamigo聯名卡':'Lamigo聯名卡','Lamigo':'Lamigo聯名卡','lamigo':'Lamigo聯名卡',
 'SPORT卡':'SPORT卡','SPORT':'SPORT卡',
 'e秒刷鈦金卡':'e秒刷鈦金卡','e秒刷':'e秒刷鈦金卡',
