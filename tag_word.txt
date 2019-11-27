@@ -69,7 +69,7 @@ card={
 'Global Mall 聯名卡':'中國信託-Global Mall 聯名卡',
 '寰遊美國運通卡':'中國信託-寰遊美國運通卡',
 'LINE Pay卡':'中國信託-LINE Pay卡','linepay':'中國信託-LINE Pay卡','Linepay':'中國信託-LINE Pay卡','LinePay':'中國信託-LINE Pay卡','LINEPAY':'中國信託-LINE Pay卡','LINE PAY':'中國信託-LINE Pay卡','Line pay':'中國信託-LINE Pay卡',
-'line pay':'中國信託-LINE Pay卡','Line':'中國信託-LINE Pay卡','LINE':'中國信託-LINE Pay卡','line':'中國信託-LINE Pay卡',
+'line pay':'中國信託-LINE Pay卡','Line':'中國信託-LINE Pay卡','LINE':'中國信託-LINE Pay卡','line':'中國信託-LINE Pay卡','LP卡':'中國信託-LINE Pay卡','LP':'中國信託-LINE Pay卡',
 'iPlan卡':'中國信託-iPlan卡',
 '中信兄弟聯名卡':'中國信託-中信兄弟聯名卡','中信兄弟':'中國信託-中信兄弟聯名卡',
 'Yahoo聯名卡':'中國信託-Yahoo聯名卡',
