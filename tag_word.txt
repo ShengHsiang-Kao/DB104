@@ -1,4 +1,4 @@
-bank={'中信':'中信','中國信託':'中信' ,'中信金':'中信' ,'中信金控':'中信','中信銀':'中信',
+﻿bank={'中信':'中信','中國信託':'中信' ,'中信金':'中信' ,'中信金控':'中信','中信銀':'中信',
 '玉山':'玉山','玉山金':'玉山','玉山金控':'玉山','玉山銀':'玉山',
 'Richart':'Richart', 'richart':'Richart',
 'KOKO':'KOKO','koko':'KOKO',
@@ -55,15 +55,12 @@ behavior={
 
 
 card={
-'linepay':'LINEPay','Linepay':'LINEPay','LinePay':'LINEPay','LINEPAY':'LINEPay','LINE PAY':'LINEPay','Line pay':'LINEPay',
-'line pay':'LINEPay','Line':'LINEPay','LINE':'LINEPay','line':'LINEPay',
-'GOGO':'GoGo','gogo':'GoGo','黑狗':'GoGo','黑狗卡':'GoGo','gogo卡':'GoGo','GOGO卡':'GoGo','Gogo卡':'GoGo','Gogo':'GoGo','GoGo':'GoGo',
-'flygo':'Flygo','Flygo':'Flygo','FLYGO':'Flygo','飛狗':'Flygo','飛狗卡':'Flygo','FlyGo':'Flygo','fly':'Flygo',
-'大戶':'dawho','dawho':'dawho','Dawho':'dawho','DAWHO':'dawho',
-
-'koko':'KOKO','KOKO':'KOKO','KoKo':'KOKO','Koko':'KOKO',
-
-
+'linepay卡':'中國信託-LINE Pay卡','Linepay卡':'中國信託-LINE Pay卡','LinePay卡':'中國信託-LINE Pay卡','LINEPAY卡':'中國信託-LINE Pay卡','LINE PAY卡':'中國信託-LINE Pay卡','Line pay卡':'中國信託-LINE Pay卡',
+'line pay卡':'中國信託-LINE Pay卡','Line卡':'中國信託-LINE Pay卡','line卡':'中國信託-LINE Pay卡',
+'GOGO':'台新銀行-GOGO卡','gogo':'台新銀行-GOGO卡','黑狗':'台新銀行-GOGO卡','黑狗卡':'台新銀行-GOGO卡','gogo卡':'台新銀行-GOGO卡','GOGO卡':'台新銀行-GOGO卡','Gogo卡':'台新銀行-GOGO卡','Gogo':'台新銀行-GOGO卡','GoGo':'台新銀行-GOGO卡',
+'flygo':'台新銀行-FlyGo卡','Flygo':'台新銀行-FlyGo卡','FLYGO':'台新銀行-FlyGo卡','飛狗':'台新銀行-FlyGo卡','飛狗卡':'台新銀行-FlyGo卡','FlyGo':'台新銀行-FlyGo卡','fly':'台新銀行-FlyGo卡',
+'大戶':'永豐銀行-DAWHO現金回饋信用卡','dawho':'永豐銀行-DAWHO現金回饋信用卡','Dawho':'永豐銀行-DAWHO現金回饋信用卡','DAWHO':'永豐銀行-DAWHO現金回饋信用卡',
+'koko':'國泰世華-KOKO icash聯名卡','KOKO':'國泰世華-KOKO icash聯名卡','KoKo':'國泰世華-KOKO icash聯名卡','Koko':'國泰世華-KOKO icash聯名卡',
 'VISA白金卡':'三信銀行-VISA白金卡',
 '簡單卡':'上海商銀-簡單卡',
 '小小兵Bello回饋卡':'上海商銀-小小兵Bello回饋卡','小小兵信用卡':'上海商銀-小小兵Bello回饋卡','小小兵':'上海商銀-小小兵Bello回饋卡',
@@ -112,13 +109,16 @@ card={
 '分享卡':'元大銀行-分享卡',
 '樂遊卡':'元大銀行-樂遊卡',
 '新世代卡':'元大銀行-新世代卡',
+'合庫卡娜赫拉':'合作金庫-卡娜赫拉的小動物 icash 聯名卡',
+'長榮聯名極致無限卡':'國泰世華-長榮航空聯名極致無限卡',
 'Life卡':'元大銀行-Life卡',
 '一番卡':'元大銀行-一番卡',
+'富邦尊御世界卡':'富邦銀行-尊御世界卡',
+'麗寶悠遊聯名卡':'玉山銀行-麗寶悠遊聯名卡',
 '元大Life卡JCB晶緻卡':'元大銀行-元大Life卡JCB晶緻卡',
 '指定卡':'元大銀行-指定卡',
 '無限卡':'日盛銀行-無限卡',
 '商務御璽卡':'日盛銀行-商務御璽卡',
-'GOGO卡':'日盛銀行-GOGO卡',
 'ALL PASS卡':'日盛銀行-ALL PASS卡',
 'cama café聯名卡':'王道銀行-cama café聯名卡',
 '簽帳金融卡':'王道銀行-簽帳金融卡',
@@ -145,8 +145,10 @@ card={
 '雙幣卡':'台新銀行-雙幣卡',
 'FlyGo卡':'台新銀行-FlyGo卡',
 '商務卡':'台新銀行-商務卡',
+'GOGO卡':'台新銀行-@GoGo iCash御璽卡',
 '@GoGo iCash御璽卡':'台新銀行-@GoGo iCash御璽卡',
 '遠傳friDay聯名卡':'台新銀行-遠傳friDay聯名卡',
+'遠傳聯名卡':'台新銀行-遠傳friDay聯名卡',
 '台新街口聯名卡':'台新銀行-台新街口聯名卡','街口聯名卡':'台新銀行-台新街口聯名卡','街口聯名':'台新銀行-台新街口聯名卡',
 '亞洲無限卡':'台新銀行-亞洲無限卡',
 '環球無限卡':'台新銀行-環球無限卡',
@@ -156,6 +158,10 @@ card={
 '太陽卡':'台新銀行-太陽卡',
 '玫瑰卡':'台新銀行-玫瑰卡',
 'ETC聯名卡':'台新銀行-ETC聯名卡',
+'iPASS分享黑啤卡':'元大銀行-iPASS分享黑啤卡',
+'黑啤卡':'元大銀行-分享黑啤卡',
+'學學認同卡':'中國信託-學學認同卡',
+'夢時代聯名卡':'華南銀行-夢時代聯名卡',
 '賓士smart聯名卡':'台新銀行-賓士smart聯名卡',
 '全家Fish悠遊聯名卡':'台新銀行-全家Fish悠遊聯名卡',
 '新光三越聯名卡':'台新銀行-新光三越聯名卡',
@@ -187,7 +193,7 @@ card={
 '雙幣信用卡':'玉山銀行-雙幣信用卡',
 'U Bear信用卡':'玉山銀行-U Bear信用卡','ubear':'玉山銀行-U Bear信用卡','UBEAR':'玉山銀行-U Bear信用卡','Ubear':'玉山銀行-U Bear信用卡','ubear':'玉山銀行-U Bear信用卡','bear':'玉山銀行-U Bear信用卡','BEAR':'玉山銀行-U Bear信用卡',
 'u bear':'玉山銀行-U Bear信用卡','U bear':'玉山銀行-U Bear信用卡','u bear':'玉山銀行-U Bear信用卡', 'Ubear卡':'玉山銀行-U Bear信用卡','U Bear':'玉山銀行-U Bear信用卡',
-
+'澳盛現金回饋卡':'澳盛銀行-現金回饋卡'
 '漢神巨蛋聯名卡':'玉山銀行-漢神巨蛋聯名卡',
 '玉山世界卡':'玉山銀行-玉山世界卡',
 '幸運鈦金卡':'玉山銀行-幸運鈦金卡',
@@ -246,6 +252,7 @@ card={
 '鈦金卡':'安泰銀行-鈦金卡',
 '分期卡':'安泰銀行-分期卡',
 '現金回饋PLUS卡':'花旗銀行-現金回饋PLUS卡',
+'PChomePrime聯名卡':'花旗銀行-PChome Prime聯名卡',
 'PChome Prime聯名卡':'花旗銀行-PChome Prime聯名卡','PChome Prime聯名卡':'花旗銀行-PChome Prime聯名卡','Prime聯名卡':'花旗銀行-PChome Prime聯名卡','Prime':'花旗銀行-PChome Prime聯名卡','rime':'花旗銀行-PChome Prime聯名卡',
 '紅利悠遊卡':'花旗銀行-紅利悠遊卡',
 '新世代花旗饗樂生活悠遊卡':'花旗銀行-新世代花旗饗樂生活悠遊卡','饗樂':'花旗銀行-新世代花旗饗樂生活悠遊卡','饗樂卡':'花旗銀行-新世代花旗饗樂生活悠遊卡',
@@ -382,4 +389,5 @@ card={
 '美華泰聯名卡':'聯邦銀行-美華泰聯名卡',
 '大立無限卡':'聯邦銀行-大立無限卡',
 '聯邦銀行世界卡':'聯邦銀行-聯邦銀行世界卡'
+'中信學學':'中國信託-學學認同卡',
 }
