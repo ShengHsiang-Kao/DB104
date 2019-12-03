@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with BasicAirData GPS Logger for Android - ver. 2.2.4 -->
+<!-- Track 1 = 7 TrackPoints + 0 Placemarks -->
+<gpx version="1.0"
+     creator="BasicAirData GPS Logger 2.2.4"
+     xmlns="http://www.topografix.com/GPX/1/0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+<name>GPS Logger 20191125-010058</name>
+<time>2019-11-24T17:01:31Z</time>
+
+<trk>
+ <name>Track 20191125-010058</name>
+ <trkseg>
+  <trkpt lat="24.96408335" lon="121.19282505"><ele>164.143</ele><time>2019-11-24T17:00:58Z</time><speed>0.000</speed><sat>13</sat></trkpt>
+  <trkpt lat="24.96408328" lon="121.19282507"><ele>164.139</ele><time>2019-11-24T17:00:59Z</time><speed>0.000</speed><sat>13</sat></trkpt>
+  <trkpt lat="24.96408327" lon="121.19282511"><ele>164.143</ele><time>2019-11-24T17:01:00Z</time><speed>0.000</speed><sat>15</sat></trkpt>
+  <trkpt lat="24.96408339" lon="121.19282513"><ele>164.192</ele><time>2019-11-24T17:01:01Z</time><speed>0.000</speed><sat>15</sat></trkpt>
+  <trkpt lat="24.96408356" lon="121.19282515"><ele>164.219</ele><time>2019-11-24T17:01:02Z</time><speed>0.000</speed><sat>15</sat></trkpt>
+  <trkpt lat="24.96408373" lon="121.19282519"><ele>164.242</ele><time>2019-11-24T17:01:03Z</time><speed>0.000</speed><sat>15</sat></trkpt>
+  <trkpt lat="24.96408383" lon="121.19282521"><ele>164.238</ele><time>2019-11-24T17:01:04Z</time><speed>0.000</speed><sat>15</sat></trkpt>
+ </trkseg>
+</trk>
+
+</gpx>
