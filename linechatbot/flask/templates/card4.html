@@ -39,7 +39,7 @@
         <!-- col-md-2 navigation -->
         <div class="navbar col-md-2 left flex-column bg-info text-white text-center ">
         <div class="container">
-          <div id="himg" class=" text-center mt-5 mb-3">
+          <div id="himg" class=" text-center mt-2 mb-2">
             <img src="https://svgsilh.com/svg/150175.svg" class="img-fluid">
             <h1  class="display-4 mt-3 ml-3 text-muted">推薦系統</h1>
           </div>
@@ -69,12 +69,12 @@
         <h1  class="display-3 mt-3 ml-3 text-muted">有卡推薦</h1>
 
           <div class="form-group">
-              <label class="col-lg-1 control-label"><h2>選擇你有的信用卡：</h2></label>
+              <label class="col-lg-1 control-label"><h2>選擇您有的信用卡：</h2></label>
 
             <div class="col-lg-6">
             <form method="post" action="/havecard">
-            <input type="submit" name="sendBtn" value="Submit" >
-            <p><select id="card" name= "cardname" class="selectpicker "  data-live-search="true" multiple="multiple" data-max-options="10">
+
+            <p><select id="card" name= "cardname" class="selectpicker "  data-live-search="true" multiple="multiple" data-max-options="10" data-width="auto">
                 {% for i in bankset %}
                     <optgroup label={{i}}>
                     {% for x in range(bank | length) %}
@@ -85,7 +85,7 @@
                  {% endfor %}
 
             </select>
-
+            <input type="submit" name="sendBtn" value="Submit" >
             </form>
         </div>
 
@@ -122,20 +122,13 @@ if(selected != null){
     // var arr = str.split(',');
     // $('#fruits').selectpicker('val', arr);
 
-$('.selectpicker').selectpicker({
-            'selectedText':'cat',
-            'dropupAuto':false
-         })
+
 $(document).ready(function() {
 $('.js-example-basic-multiple').select2();
 });
 
-$('.selectpicker show-menu-arrow form-control').selectpicker({
-                'selectedText':'cat',
-                 'noneSelectedText':'请选择',
-                 'deselectAllText':'全不选',
-                 'selectAllText': '全选',
-             })
+
+
 </script>
 
 

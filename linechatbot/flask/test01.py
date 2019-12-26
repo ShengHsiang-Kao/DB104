@@ -25,11 +25,6 @@ def index():
         id = request.cookies.get('id')
         return resp
 
-@app.route('/kibana')
-def kibana():
-        return render_template('kibana.html')
-
-        
 @app.route('/card')
 def yocard():
     if 'id' in request.cookies:
@@ -124,21 +119,18 @@ def result(id):
         A = result[0]["card1"]
         B = result[0]["card2"]
         C = result[0]["card3"]
-        D = result[0]["card4"]
-        E = result[0]["card5"]
         card1 = list(coll2.find({"卡名02": A}))[0]
         del card1["_id"];del card1["熱度排名"]
         card2 = list(coll2.find({"卡名02": B}))[0]
         del card2["_id"];del card2["熱度排名"]
         card3 = list(coll2.find({"卡名02": C}))[0]
         del card3["_id"];del card3["熱度排名"]
-        card4 = list(coll2.find({"卡名02": D}))[0]
-        del card4["_id"];del card4["熱度排名"]
-        card5 = list(coll2.find({"卡名02": E}))[0]
-        del card5["_id"];del card5["熱度排名"]
         client.close()
         return render_template('result.html',id=id,card1=card1,card2=card2,card3=card3,card4=card4,card5=card5)
 
+@app.route('/kibana')
+def kibana():
+    return render_template('kibana.html')
 
 if __name__ == "__main__":
     #app.run()
