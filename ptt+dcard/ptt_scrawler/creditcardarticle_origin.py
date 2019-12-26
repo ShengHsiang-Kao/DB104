@@ -1,0 +1,83 @@
+# -*- coding: utf-8 -*-
+import requests
+from bs4 import BeautifulSoup
+import json
+from my_fake_useragent import UserAgent
+import os, time, re
+import pandas as pd
+
+resource_path = r'./res_creditcard'
+if not os.path.exists(resource_path):
+    os.mkdir(resource_path)
+
+headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'}
+url = 'https://www.ptt.cc/bbs/creditcard/index.html'
+
+n = 5000
+for i in range(0,n):
+
+    res = requests.get(url=url, headers=headers)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    article_title_html = soup.select('div[class="title"]')
+
+    for each_article in article_title_html:
+        try:
+            print(each_article.a.text)
+            print('https://www.ptt.cc' + each_article.a['href'])
+
+            article_url = 'https://www.ptt.cc' + each_article.a['href']
+            article_text = each_article.a.text
+            article_res = requests.get(article_url, headers=headers)
+            article_soup = BeautifulSoup(article_res.text, 'html.parser')
+
+            push_up = 0
+            push_down = 0
+            score = 0
+            author = ''
+            title = ''
+            datetime = ''
+            try:
+                article_content = article_soup.select('div#main-content')[0].text.split('--')[0]
+                push_info_list = article_soup.select('div[class="push"] span')
+                for info in push_info_list:
+                    if '推' in info.text:
+                        push_up += 1
+                    if '噓' in info.text:
+                        push_down += 1
+                article_info_list = article_soup.select('div[class="article-metaline"] span')
+                for n, info in enumerate(article_info_list):
+                    if (n+1)%6 == 2:
+                        author = info.text
+                    if (n+1)%6 == 4:
+                        title = info.text
+                    if (n+1)%6 == 0:
+                        datetime = info.text
+                score = push_up - push_down
+                article_content += '\n---split---\n'
+                article_content += '推: %s\n'%(push_up)
+                article_content += '噓: %s\n'%(push_down)
+                article_content += '分數: %s\n'%(score)
+                article_content += '作者: %s\n'%(author)
+                article_content += '標題: %s\n'%(title)
+                article_content += '時間: %s\n'%(datetime)
+                article_content += '網址: %s\n'%(article_url)
+
+                try:
+                    with open('%s/%s.txt' % (resource_path, each_article.a.text.replace('/', '-')), 'w', encoding='utf-8') as f:
+                        f.write(article_content)
+                except OSError as e:
+                    with open('%s/article%s.txt' % (resource_path, n), 'w', encoding='utf-8') as f:
+                        f.write(article_content)
+                print()
+            except FileNotFoundError as e:
+                print('==========')
+                print(article_url)
+                print(e.args)
+                print('==========')
+        except AttributeError as e:
+            print('==========')
+            print(each_article)
+            print(e.args)
+            print('==========')
+
+    url = 'https://www.ptt.cc' + soup.select('div[class="btn-group btn-group-paging"]')[0].select('a')[1]['href']
