@@ -1,6 +1,7 @@
 from keras.models import load_model
 import pandas as pd
 import numpy as np
+import pymongo
 from gensim.models.keyedvectors import KeyedVectors
 import jieba
 # 引用Web Server套件
@@ -92,6 +93,13 @@ def managePredict(event, mtext):  #處理LIFF傳回的FORM資料
 #     text1 += "\n有無持卡："+ flist[5]
     list_1=[item1, item2, item3, item4, item5, item6]
     quota=inputs(list_1)
+    dict_mongodb = {'age': item1, 'serve_time': item2, 'loan': item3, 'sal_per_year': item4, 'hold_card': item5,
+                    'career': item6, 'quota': quota}
+    client = pymongo.MongoClient(host='123.241.175.34', port=27017)
+    client.admin.authenticate('root', '1qaz@WSX3edc')
+    db = client.predict
+    db.quota.insert_one(dict_mongodb)
+    client.close()
     text1 = "您的預估額度為："+ quota
     try:
         message = TextSendMessage(  #顯示資料
@@ -117,8 +125,7 @@ article = pd.read_excel(r"/app/article_news_vector _final.xlsx")
 articles_matrix = [get_article_matrix(article, i) for i in range(5594)]
 
 # 2.載入bin檔
-wv_from_bin = KeyedVectors.load_word2vec_format(
-    r'/app/100win20min_count3cbow1.bin',binary=True)
+wv_from_bin = KeyedVectors.load_word2vec_format(r'/app/100win20min_count3cbow1.bin',binary=True)
 
 # 3.輸入文字
 def please_input_words(rlist):
@@ -239,10 +246,10 @@ def near_by_info(lat,lng):
 reply_message_list = [
 TextSendMessage(text="關注信我卡來，找到適合你的卡片。"),
     TextSendMessage(text="哈囉！😊歡迎加入信我卡來，我們提供關於信用卡💳的各種資訊，歡迎點擊您有興趣的功能喔！😄"),
-    ImageSendMessage(original_content_url='https://%s/images/card.jpg' %server_url ,
-    preview_image_url='https://%s/images/card-to-woman.jpg' %server_url),
-    ImageSendMessage(original_content_url='https://%s/images/card_hand.jpg' %server_url,
-    preview_image_url='https://%s/images/credit-card.jpg' %server_url)
+    ImageSendMessage(original_content_url='https://i.imgur.com/YXXiCvZ.jpg',
+    preview_image_url='https://i.imgur.com/Zs6btto.jpg'),
+    ImageSendMessage(original_content_url='https://i.imgur.com/x0vZwjt.jpg',
+    preview_image_url='https://i.imgur.com/GEVyxIt.jpg')
 ]
 
 # 預測額度流程
@@ -268,7 +275,7 @@ TextSendMessage(text="想知道您的核卡額度？🤔輸入下列訊息，我
 reply_message_list_news = [
 TextSendMessage(text="您想知道哪一類的信用卡相關資訊呢？點選下方按鈕或是輸入@加上您感興趣的內容，例如:@我想知道2020最強神卡，我們就會提供相關訊息給您🙂"),
 ImagemapSendMessage(
-    base_url='https://%s/images/news'%server_url,
+    base_url='https://i.imgur.com/Ohn59DU.png#',
     alt_text='新聞推薦',
     base_size=BaseSize(height=1686, width=2500),
     actions=[
@@ -312,14 +319,14 @@ TextSendMessage(text="不知道哪張信用卡適合自己嗎？😥讓我們來
     TemplateSendMessage(
      alt_text='Buttons template',
       template=ButtonsTemplate(
-      thumbnailImageUrl='https://%s/images/debit-card.png',
+      thumbnail_image_url='https://i.imgur.com/lNxWpfE.png',
         title='持卡狀況',
         text='您是初次辦卡？還是已經有信用卡了呢？',
     actions=[
       {
         "type": "uri",
         "label": "已持有信用卡",
-        "uri": "https://.ngrok.io"
+        "uri": "https://.ngrok.io/card"
       },
       {
         "type": "uri",
@@ -357,62 +364,67 @@ template_message_dict = {
 # 用戶發出文字消息時， 按條件內容, 回傳文字消息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if(event.message.text.find('::text:')!= -1):
-#         print(event.message.text)
+    if (event.message.text.find('::text:') != -1):
+        #         print(event.message.text)
         line_bot_api.reply_message(
-        event.reply_token,
-        template_message_dict.get(event.message.text)
+            event.reply_token,
+            template_message_dict.get(event.message.text)
         )
-    elif event.message.text.find('###')!= -1 and len(event.message.text) > 3:
+    elif event.message.text.find('###') != -1 and len(event.message.text) > 3:
         managePredict(event, event.message.text)
-    elif event.message.text.find('@')!= -1 and len(event.message.text) > 2:
+    elif event.message.text.find('@') != -1 and len(event.message.text) > 2:
         manageRecommend(event, event.message.text)
     elif event.message.text == "#旅遊優惠新聞":
-        article = pd.read_excel(r"/app/article_news_vector _final_30.xlsx")
-        text_1 = str(np.array(article[article['label']==29]['content'])[0])
+        article = pd.read_excel(r"./article_news_vector _final_30_1225.xlsx")
+        a = np.random.randint(len(np.array(article[article['label'] == 29]['content'])))
+        text_1 = str(np.array(article[article['label'] == 29]['content'])[a])
         try:
-            message = TextSendMessage(  #顯示資料
-                text = text_1
+            message = TextSendMessage(  # 顯示資料
+                text=text_1
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='發生錯誤！'))
     elif event.message.text == "#行動支付新聞":
-        article = pd.read_excel(r"/app/article_news_vector _final_30.xlsx")
-        text_1 = str(np.array(article[article['label']==13]['content'])[0])
+        article = pd.read_excel(r"./article_news_vector _final_30_1225.xlsx")
+        b = np.random.randint(len(np.array(article[article['label'] == 13]['content'])))
+        text_1 = str(np.array(article[article['label'] == 13]['content'])[b])
         try:
-            message = TextSendMessage(  #顯示資料
-                text = text_1
+            message = TextSendMessage(  # 顯示資料
+                text=text_1
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='發生錯誤！'))
     elif event.message.text == "#交通加油新聞":
-        article = pd.read_excel(r"/app/article_news_vector _final_30.xlsx")
-        text_1 = str(np.array(article[article['label']==23]['content'])[0])
+        article = pd.read_excel(r"./article_news_vector _final_30_1225.xlsx")
+        c = np.random.randint(len(np.array(article[article['label'] == 23]['content'])))
+        text_1 = str(np.array(article[article['label'] == 23]['content'])[c])
         try:
-            message = TextSendMessage(  #顯示資料
-                text = text_1
+            message = TextSendMessage(  # 顯示資料
+                text=text_1
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='發生錯誤！'))
     elif event.message.text == "#促銷活動新聞":
-        article = pd.read_excel(r"/app/article_news_vector _final_30.xlsx")
-        text_1 = str(np.array(article[article['label']==0]['content'])[0])
+        article = pd.read_excel(r"./article_news_vector _final_30_1225.xlsx")
+        d = np.random.randint(len(np.array(article[article['label'] == 0]['content'])))
+        text_1 = str(np.array(article[article['label'] == 0]['content'])[d])
         try:
-            message = TextSendMessage(  #顯示資料
-                text = text_1
+            message = TextSendMessage(  # 顯示資料
+                text=text_1
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='發生錯誤！'))
     elif event.message.text == "#繳費繳稅新聞":
-        article = pd.read_excel(r"/app/article_news_vector _final_30.xlsx")
-        text_1 = str(np.array(article[article['label']==26]['content'])[0])
+        article = pd.read_excel(r"./article_news_vector _final_30_1225.xlsx")
+        e = np.random.randint(len(np.array(article[article['label'] == 26]['content'])))
+        text_1 = str(np.array(article[article['label'] == 26]['content'])[e])
         try:
-            message = TextSendMessage(  #顯示資料
-                text = text_1
+            message = TextSendMessage(  # 顯示資料
+                text=text_1
             )
             line_bot_api.reply_message(event.reply_token, message)
         except:
