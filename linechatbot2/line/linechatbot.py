@@ -179,7 +179,7 @@ def cos_similar(vector_a, vector_b):
 def manageRecommend(event, mtext):
     rlist = mtext[1:]
     input_vector_matrix = please_input_words(rlist)
-    most_similar_article = 餘弦相似度找文章(rlist, input_vector_matrix)
+    most_similar_article = cosine_similar_find_article(rlist, input_vector_matrix)
     text_1 = str(most_similar_article)
     try:
         message = TextSendMessage(  # 顯示資料
@@ -190,7 +190,7 @@ def manageRecommend(event, mtext):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text='發生錯誤！'))
 
 # 比對
-def 餘弦相似度找文章(rlist, input_vector_matrix):
+def cosine_similar_find_article(rlist, input_vector_matrix):
     articles_matrix_list = []
     for b in range(5000):
         result = cos_similar(input_vector_matrix, articles_matrix[b])
