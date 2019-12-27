@@ -1,2 +1,2 @@
-./linechatbot/start.sh
-./linechatbot/line/line_secret_key
+/linechatbot/start.sh
+/linechatbot/line/line_secret_key
