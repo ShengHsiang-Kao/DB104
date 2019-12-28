@@ -23,7 +23,7 @@ try:
     coll.delete_one({'mark':'udns'})
 
 except:
-    signal='搶紅包年終財 永豐銀數位帳戶1.1%活存再延半年' #如果沒有存過就爬到這裡
+    signal='春節瘋旅日？北富銀J卡三周大増20萬張 搶卡王寶座' #如果沒有存過就爬到這裡
 
 title01=''
 n=1
