@@ -30,7 +30,7 @@ n=1
 index=0
 df=pd.DataFrame(columns=['標題','發布時間','網址','內文'])
 while True:
-    url = f'https://udn.com/search/result/2/%E4%BF%A1%E7%94%A8%E5%8D%A1/{n}'
+    url = f'https://udn.com/search/tagging/2/%E4%BF%A1%E7%94%A8%E5%8D%A1/{n}'
     res = requests.get(url, headers=headers)
     soup = BeautifulSoup(res.text, 'html.parser')
     title = soup.select('div[id="search_content"]')
