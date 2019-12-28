@@ -42,8 +42,8 @@ while True:
             Nsignal = title
         if title == signal:
             break
-        print(title)
-        date = re.findall(r'\d\d\d\d/\d\d/\d\d', i.span.text)
+        #print(title)
+        date = re.findall(r'\d\d\d\d-\d\d-\d\d', i.span.text)
         #         print(date[0])
         t_url = i.a['href']
         #         print(t_url)
