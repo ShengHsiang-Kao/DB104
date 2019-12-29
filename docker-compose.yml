@@ -1,0 +1,271 @@
+version: '3.7'
+services:
+  zoo1:
+    image: zookeeper
+    restart: always
+    hostname: zoo1
+    ports:
+      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+    deploy:
+      placement:
+        constraints: [ node.labels.master == true ]
+  zoo2:
+    image: zookeeper
+    restart: always
+    hostname: zoo2
+    ports:
+      - 2182:2181
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=0.0.0.0:2888:3888;2181 server.3=zoo3:2888:3888;2181
+    deploy:
+      placement:
+        constraints: [ node.labels.worker1 == true ]
+  zoo3:
+    image: zookeeper
+    restart: always
+    hostname: zoo3
+    ports:
+      - 2183:2181
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
+    deploy:
+      placement:
+        constraints: [ node.labels.worker2 == true ]
+  kafka1:
+    image: wurstmeister/kafka:latest
+    ports:
+      - target: 29093
+        published: 29093
+        protocol: tcp
+        mode: host
+    environment:
+      KAFKA_BROKER_ID: 1
+      HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
+      KAFKA_ZOOKEEPER_CONNECT: zoo1:2181,zoo2:2181,zoo3:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:29092,OUTSIDE://_{HOSTNAME_COMMAND}:29093
+      KAFKA_LISTENERS: INSIDE://:29092,OUTSIDE://:29093
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_HEAP_OPTS: "-Xmx512M -Xms512M"
+      KAFKA_JVM_PERFORMANCE_OPTS: "-Xmx256M -Xms256M"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      placement:
+        constraints: [ node.labels.master == true ]
+  kafka2:
+    image: wurstmeister/kafka:latest
+    ports:
+      - target: 29094
+        published: 29094
+        protocol: tcp
+        mode: host
+    environment:
+      KAFKA_BROKER_ID: 2
+      HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
+      KAFKA_ZOOKEEPER_CONNECT: zoo1:2181,zoo2:2181,zoo3:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:29092,OUTSIDE://_{HOSTNAME_COMMAND}:29094
+      KAFKA_LISTENERS: INSIDE://:29092,OUTSIDE://:29094
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_HEAP_OPTS: "-Xmx512M -Xms512M"
+      KAFKA_JVM_PERFORMANCE_OPTS: "-Xmx512M -Xms512M"deploy:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      placement:
+        constraints: [ node.labels.worker1 == true ]
+  kafka3:
+    image: wurstmeister/kafka:latest
+    ports:
+      - target: 29095
+        published: 29095
+        protocol: tcp
+        mode: host
+    environment:
+      KAFKA_BROKER_ID: 5
+      HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
+      KAFKA_ZOOKEEPER_CONNECT: zoo1:2181,zoo2:2181,zoo3:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:29092,OUTSIDE://_{HOSTNAME_COMMAND}:29095
+      KAFKA_LISTENERS: INSIDE://:29092,OUTSIDE://:29095
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_HEAP_OPTS: "-Xmx512M -Xms512M"
+      KAFKA_JVM_PERFORMANCE_OPTS: "-Xmx512M -Xms512M"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      placement:
+        constraints: [ node.labels.worker2 == true ]
+  flask:
+    image: simp24118/flask:1.2
+    container_name: flask
+    hostname: flask
+    ports:
+      - "5050:5050"
+    depends_on:
+      - kafka
+    deploy:
+      placement:
+        constraints: [ node.labels.master == true ] 
+  ngrok1:
+    image: wernight/ngrok
+    container_name: flask_ngrok
+    tty: true
+    stdin_open: true
+    ports:
+      - target: 4040
+        published: 54088
+        protocol: tcp
+        mode: host
+    depends_on:
+      - flask
+    deploy:
+      placement:
+        constraints: [ node.labels.master == true ]
+    command: ngrok http flask:5050
+  spark-master1:
+    image: simp24118/spark-master:1.4
+    container_name: spark-master
+    ports:
+      - "8100:8080"
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+      - SPARK_DAEMON_JAVA_OPTS= -Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=zoo1:2181,zoo2:2181,zoo3:2181
+    deploy:
+      placement:
+        constraints: [ node.labels.master == true ]
+  spark-master2:
+    image: simp24118/spark-master:1.4
+    container_name: spark-master
+    ports:
+      - "8200:8080"
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+      - SPARK_DAEMON_JAVA_OPTS= -Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=zoo1:2181,zoo2:2181,zoo3:2181
+    deploy:
+      placement:
+        constraints: [ node.labels.worker1 == true ]
+  spark-worker:
+    image: simp24118/spark-worker:1.4
+    container_name: spark-worker
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"
+    environment:
+      - SPARK_MASTER= spark://spark-master1:7077,spark-master2:7077
+    deploy:
+      replicas: 2
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.0.0
+    hostname: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - TAKE_FILE_OWNERSHIP=true
+    volumes:
+      - ./esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    deploy:
+      placement:
+        constraints: [ node.labels.master == true ]
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.0.0
+    hostname: kibana
+    environment:
+      SERVER_NAME: kibana_server
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.1.3-java8
+    hostname: namenode
+    ports:
+      - 9870:9870
+    volumes:
+      - namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [ node.labels.master == true ]
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.1.3-java8
+    ports:
+      - 9864:9864
+    volumes:
+      - datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.1.3-java8
+    hostname: resourcemanager
+    ports:
+      - 8088:8088 
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864"
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [ node.labels.master == true ]
+    healthcheck:
+      disable: true
+
+  nodemanager:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.1.3-java8
+    ports:
+      - 8042:8042
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+  historyserver:
+    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.1.3-java8
+    hostname: historyserver
+    ports:
+      - 8188:8188
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [ node.labels.master == true ]
+
+volumes:
+  datanode:
+  namenode:
+  hadoop_historyserver:
