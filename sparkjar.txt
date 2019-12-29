@@ -1,0 +1,4 @@
+spark-submit --master spark://spark-master:7077 --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.4 --total-executor-cores 4
+zkServer.sh status
+docker volume prune
+hdfs haadmin -transitionToActive nn1 --forcemanual
