@@ -1,1 +1,0 @@
-* * * * * bash /Users/roland/DB104/DB104/爬網自動化/scrawler.sh
