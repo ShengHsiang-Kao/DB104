@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -40,7 +42,7 @@ while True:
         title = i.h2.text
         if index == 0:
             Nsignal = title
-        if title == signal:
+        if title == signal or index >100:
             break
         #print(title)
         date = re.findall(r'\d\d\d\d-\d\d-\d\d', i.span.text)
@@ -62,7 +64,7 @@ while True:
             title01=title
     #         print('-----------------------------')
 
-    if title == signal:
+    if title == signal or index >100:
         break
     n += 1
 

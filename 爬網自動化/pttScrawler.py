@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -40,7 +42,7 @@ while True:
             titel01 = each_article.a.text
             if index == 0:
                 Nsignal = titel01  # 第一筆會加進去做記號
-            if titel01 == signal:  # 找到signal上次標題跳出
+            if titel01 == signal or index >100:  # 找到signal上次標題跳出
                 break
             url01 = 'https://www.ptt.cc' + each_article.a['href']
 
@@ -56,7 +58,7 @@ while True:
             index += 1
         except:
             pass
-    if titel01 == signal:  # 終止迴圈
+    if titel01 == signal or index >100:  # 終止迴圈
         break
     url = 'https://www.ptt.cc' + soup.select('div[class="btn-group btn-group-paging"]')[0].select('a')[1]['href']
 

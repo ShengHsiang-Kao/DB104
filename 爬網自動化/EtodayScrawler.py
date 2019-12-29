@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import requests
 from bs4 import BeautifulSoup
 from selenium.webdriver import Chrome
@@ -51,7 +53,7 @@ while True:
             print(title01)
             if index == 0:
                 Nsignal = title01
-            if title01 == singal:
+            if title01 == singal or index >100:
                 break
             res01 = requests.get(url01, headers=headers)
             soup01 = BeautifulSoup(res01.text, 'html.parser')
@@ -78,7 +80,7 @@ while True:
     url = "https://www.ettoday.net/news_search/doSearch.php?keywords=%E4%BF%A1%E7%94%A8%E5%8D%A1&idx=2&page=" + str(
         page)
     page += 1
-    if title01 == singal:
+    if title01 == singal or index >100:
         break
 if index >0:
     data = json.loads(df.T.to_json()).values()
