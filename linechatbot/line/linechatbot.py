@@ -226,19 +226,22 @@ def near_by_info(lat,lng):
         dist=geodesic(address,(lat,lng)).kilometers
         #若小於3公里
         if dist<3:
-            if len(store)<5:
-                store.append(df_store_list['store'][i])
-                if df_store_list['store'][i]=='屈臣氏':
-                    info.append('刷LINEPay卡5%回饋')
-                elif df_store_list['store'][i]=='美廉社':
-                    info.append('刷LINEPay卡2%回饋')
-                addr.append(df_store_list['address'][i])
-                distance.append(str(round(dist,2))+'km')
+            store.append(df_store_list['store'][i])
+            if df_store_list['store'][i]=='屈臣氏':
+                info.append('刷LINEPay卡5%回饋')
+            elif df_store_list['store'][i]=='美廉社':
+                info.append('刷LINEPay卡2%回饋')
+            addr.append(df_store_list['address'][i])
+            distance.append(str(round(dist,2))+'km')
     neardf = pd.DataFrame({'店家':store,'優惠內容':info,'地址':addr,'距離':distance},columns=['店家','優惠內容','地址','距離'])
     if len(neardf)==0:
         neardf = '附近沒有優惠店家'
         return neardf
-    else:
+    elif len(neardf)<=5: 
+        neardf=str(neardf)
+        return neardf
+    elif len(neardf)>5: 
+        neardf=neardf.sort_values(by='距離')[:5]
         neardf=str(neardf)
         return neardf
 
