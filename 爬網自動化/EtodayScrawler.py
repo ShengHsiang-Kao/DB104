@@ -13,7 +13,7 @@ from hdfs import *
 client = Client("http://namenode:9870",root="/",timeout=100,session=False)
 try:
     with client.read('/user/hdfs/news/ENsignal.txt', encoding='utf-8') as reader:
-        signal =reader.read()
+        singal =reader.read()
     client.delete('/user/hdfs/news/ENsignal.txt')
 except:
     singal='2020年信用卡優惠縮水　一次讓你搞懂哪些好康被吃掉'
@@ -51,8 +51,7 @@ while True:
                 j += i.text + '\n'
             # print(j)
 
-            df.loc[locn] = title01, time, url01, j
-            locn += 1
+            df.loc[index] = title01, time, url01, j
             index += 1
     except Exception as e:
         print('erro:', e + str(len(df)))
