@@ -6,24 +6,17 @@ import json
 import pandas as pd
 import re
 import pymongo
+from hdfs import *
+client = Client("http://namenode:9870",root="/",timeout=100,session=False)
 
 useragent= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'
 headers={'User-Agent':useragent}
 
 
-client = pymongo.MongoClient(host='123.241.175.34', port=27017)
-#mongodb帳號密碼
-client.admin.authenticate('root', '1qaz@WSX3edc')
-#設定名稱為test的資料庫 也可用 db = client['test']
-db = client.Recommend_card
-#設定名稱為creditcard的collection  也可用coll = db['creditcard']
-coll = db.Udnews
-
 try:
-    mondata = coll.find_one({'mark':'udns'})  #上次爬的地方做記號
-    signal=mondata['signal']
-    coll.delete_one({'mark':'udns'})
-
+    with client.read('/user/hdfs/news/UdnNsignal.txt', encoding='utf-8') as reader:
+        signal =reader.read()
+    client.delete('/user/hdfs/news/UdnNsignal.txt')
 except:
     signal='春節瘋旅日？北富銀J卡三周大増20萬張 搶卡王寶座' #如果沒有存過就爬到這裡
 
@@ -68,10 +61,15 @@ while True:
         break
     n += 1
 
+
 if index >0:
-    data = json.loads(df.T.to_json()).values()
-    #將資料存入mongodb
-    coll.insert_many(data)
-coll.insert_one({"signal":Nsignal,'mark':'udns'})
+    if 'udn.csv' in client.list("/user/hdfs/news/"):
+        with client.write('/user/hdfs/news/udn.csv', append=True, encoding='utf-8') as writer:
+            df.to_csv(writer)
+    else:
+        with client.write('/user/hdfs/news/udn.csv', encoding='utf-8', overwrite=True) as writer:
+            df.to_csv(writer)
+with client.write('/user/hdfs/news/UdnNsignal.txt', encoding='utf-8') as writer:
+    writer.write(Nsignal)
 print(df)
 print(Nsignal)

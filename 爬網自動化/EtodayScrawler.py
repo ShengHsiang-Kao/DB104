@@ -9,27 +9,12 @@ import time
 import json
 import re
 import pymongo
-
-#連接 mongodb
-
-client = pymongo.MongoClient(host='123.241.175.34', port=27017)
-
-#mongodb帳號密碼
-
-client.admin.authenticate('root', '1qaz@WSX3edc')
-
-#設定名稱為test的資料庫 也可用 db = client['test']
-
-db = client.Recommend_card
-
-#設定名稱為creditcard的collection  也可用coll = db['creditcard']
-
-coll = db.news
-
+from hdfs import *
+client = Client("http://namenode:9870",root="/",timeout=100,session=False)
 try:
-    mondata = coll.find_one({'mark':'news'})
-    singal=mondata['signal']
-    coll.delete_one({'mark':'news'})
+    with client.read('/user/hdfs/news/ENsignal.txt', encoding='utf-8') as reader:
+        signal =reader.read()
+    client.delete('/user/hdfs/news/ENsignal.txt')
 except:
     singal='2020年信用卡優惠縮水　一次讓你搞懂哪些好康被吃掉'
 
@@ -66,7 +51,8 @@ while True:
                 j += i.text + '\n'
             # print(j)
 
-            df.loc[index] = title01, time, url01, j
+            df.loc[locn] = title01, time, url01, j
+            locn += 1
             index += 1
     except Exception as e:
         print('erro:', e + str(len(df)))
@@ -83,13 +69,13 @@ while True:
     if title01 == singal or index >100:
         break
 if index >0:
-    data = json.loads(df.T.to_json()).values()
-
-#將資料存入mongodb
-
-    coll.insert_many(data)
-coll.insert_one({"signal":Nsignal,'mark':'news'})
-
-
+    if 'Etoday.csv' in client.list("/user/hdfs/news/"):
+        with client.write('/user/hdfs/news/Etoday.csv', append=True, encoding='utf-8') as writer:
+            df.to_csv(writer)
+    else:
+        with client.write('/user/hdfs/news/Etoday.csv', encoding='utf-8', overwrite=True) as writer:
+            df.to_csv(writer)
+with client.write('/user/hdfs/news/ENsignal.txt', encoding='utf-8') as writer:
+    writer.write(Nsignal)
 print(df)
 print(Nsignal)

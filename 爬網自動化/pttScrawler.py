@@ -6,30 +6,22 @@ import json
 import os, time, re
 import pandas as pd
 import time
-import pandas as pd
 import re
-import pymongo
+from hdfs import *
+
+client = Client("http://namenode:9870",root="/",timeout=100,session=False)
+
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36'}
 url = 'https://www.ptt.cc/bbs/creditcard/index.html'
 index=0
 df = pd.DataFrame(columns=['標題', '時間', '網址', '內文'])
-client = pymongo.MongoClient(host='123.241.175.34', port=27017)
 
-#mongodb帳號密碼
 
-client.admin.authenticate('root', '1qaz@WSX3edc')
 
-#設定名稱為test的資料庫 也可用 db = client['test']
-
-db = client.Recommend_card
-
-#設定名稱為creditcard的collection  也可用coll = db['creditcard']
-
-coll = db.ptt
 try:
-    mondata = coll.find_one({'mark':'ptts'})
-    signal=mondata['signal']
-    coll.delete_one({'mark':'ptts'})
+    with client.read('/user/hdfs/news/Nsignal.txt', encoding='utf-8') as reader:
+        signal =reader.read()
+    client.delete('/user/hdfs/news/Nsignal.txt')
 except:
     signal='Re: [情報] 6 Pay享6%，My樂94神'
 
@@ -63,9 +55,15 @@ while True:
     url = 'https://www.ptt.cc' + soup.select('div[class="btn-group btn-group-paging"]')[0].select('a')[1]['href']
 
 if index >0:
-    data = json.loads(df.T.to_json()).values()
-    #將資料存入mongodb
-    coll.insert_many(data)
-coll.insert_one({"signal":Nsignal,'mark':'ptts'})
+    if 'ptt.csv' in client.list("/user/hdfs/news/"):
+        with client.write('/user/hdfs/news/ptt.csv', append=True, encoding='utf-8') as writer:
+            df.to_csv(writer)
+
+    else:
+        with client.write('/user/hdfs/news/ptt.csv', encoding='utf-8', overwrite=True) as writer:
+            df.to_csv(writer)
+
+with client.write('/user/hdfs/news/Nsignal.txt', encoding='utf-8') as writer:
+    writer.write(Nsignal)
 print(df)
 print(Nsignal)
