@@ -118,7 +118,7 @@ services:
         published: 54089
         protocol: tcp
         mode: host
-    command: ngrok http --authtoken=1VL8slCuKJHCqiew8aNQ6RX17OB_71t9KKKT4P6hKLbdxNZR8  line:5000
+    command: ngrok http --authtoken=*  line:5000
 
   ngrok1:
     image: wernight/ngrok
@@ -132,4 +132,4 @@ services:
         mode: host
     depends_on:
       - line
-    command: ngrok http --authtoken=1VKOuhM4voxYq0soGIzHULa7Raz_7X8WRm3GNZbqgwKDJzmuM  flask:5002
+    command: ngrok http --authtoken=*  flask:5002
