@@ -243,8 +243,8 @@ def near_by_info(lat, lng):
 
 # 消息清單
 reply_message_list = [
-TextSendMessage(text="關注信我卡來，找到適合你的卡片。"),
-    TextSendMessage(text="哈囉！😊歡迎加入信我卡來，我們提供關於信用卡💳的各種資訊，歡迎點擊您有興趣的功能喔！😄"),
+TextSendMessage(text="關注信手卡來，找到適合你的卡片。"),
+    TextSendMessage(text="哈囉！😊歡迎加入信手卡來，我們提供關於信用卡💳的各種資訊，歡迎點擊您有興趣的功能喔！😄"),
     ImageSendMessage(original_content_url='https://i.imgur.com/YXXiCvZ.jpg',
     preview_image_url='https://i.imgur.com/Zs6btto.jpg'),
     ImageSendMessage(original_content_url='https://i.imgur.com/x0vZwjt.jpg',
