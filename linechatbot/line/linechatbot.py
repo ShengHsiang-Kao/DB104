@@ -329,7 +329,7 @@ TextSendMessage(text="不知道哪張信用卡適合自己嗎？😥讓我們來
       },
       {
         "type": "uri",
-        "label": "初次辦卡：消費行為頻率推薦",
+        "label": "初辦卡：卡片功能推薦",
         "uri": "https://.ngrok.io"
       }
     ],
