@@ -319,17 +319,17 @@ TextSendMessage(text="不知道哪張信用卡適合自己嗎？😥讓我們來
      alt_text='Buttons template',
       template=ButtonsTemplate(
       thumbnail_image_url='https://i.imgur.com/lNxWpfE.png',
-        title='持卡狀況',
+        title='您想要什麼樣的卡片？',
         text='您是初次辦卡？還是已經有信用卡了呢？',
     actions=[
       {
         "type": "uri",
-        "label": "已持有信用卡",
+        "label": "已持有：類似卡片推薦",
         "uri": "https://.ngrok.io/card"
       },
       {
         "type": "uri",
-        "label": "初次辦卡小白",
+        "label": "初次辦卡：消費行為頻率推薦",
         "uri": "https://.ngrok.io"
       }
     ],
