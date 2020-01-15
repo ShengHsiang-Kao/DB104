@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from keras.models import load_model
 import pandas as pd
 import numpy as np
@@ -18,6 +19,7 @@ from geopy.distance import geodesic
 import pandas as pd
 import json
 from linebot.models import *
+from sklearn.externals import joblib
 
 #引入按鍵模板
 from linebot.models.template import(
@@ -52,25 +54,28 @@ def callback():
     return 'OK'
 
 def inputs(list_1):
-    for n,i in enumerate(list_1):
+    for n, i in enumerate(list_1):
         try:
-            list_1[n]=int(i)
+            list_1[n] = int(i)
         except:
-            list_1[n]=0
-    mean = [26.9859331, 30.2746547, 0.467701106, 741277.863,0.582340575, 2.10021023]
-    std = [4.61549746, 47.8120109, 0.807741531, 1397767.31,0.493173428, 0.626818273]
-    userdf = pd.DataFrame(columns=["age","serveTime","Loan","SalPerY","holdCard","Career"])
+            list_1[n] = 0
+    train_data_range = [36.000000, 1284.1109, 3.0000000, 24980000, 1.0000000, 3.000000]
+    train_data_min = [20.0, -6.11089842, 0.00000000, 20000.0000, 0.00000000, 1.0000000]
+    userdf = pd.DataFrame(columns=["age", "serveTime", "Loan", "SalPerY", "holdCard", "Career"])
     userdf.loc[0] = list_1
-    userdf -= mean
-    userdf /= std
-    model = load_model('predict.h5')
+    userdf -= train_data_min
+    userdf /= train_data_range
+    userdf = userdf.astype(float)
+    model = load_model('model.h5')
     preds = model.predict(userdf)
-#     print(preds)
-    #print(max(preds))
-    pp=np.argmax(preds)
-#     print(preds.item(np.argmax(preds)))
-    list_2=['2萬~4.5萬','4.5萬~9.5萬','9.5萬~19.5萬','19.5萬~29.5萬','29.5萬以上']
-    return str(list_2[pp])
+    qq = np.where(preds[0] == np.max(preds[0]))
+    #     print(preds)
+    # print(max(preds))
+    #     print(preds.item(np.argmax(preds)))
+    list_2 = ['0萬~5萬', '5萬~10萬', '10萬~15萬', '15萬~20萬', '20萬~25萬', '25萬~30萬', '30萬~35萬', '35萬~40萬', '40萬~45萬', '45萬~50萬',
+              '50萬~55萬', '55萬~60萬',
+              '60萬~65萬', '65萬~70萬', '70萬~75萬', '75萬~80萬', '80萬~85萬', '85萬~90萬', '90萬~95萬', '95萬~100萬']
+    return str(list_2[qq[0][0]])
 
 def managePredict(event, mtext):  #處理LIFF傳回的FORM資料
     flist = mtext[3:].split('/')  #去除前三個「#」字元再分解字串
