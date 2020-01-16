@@ -103,7 +103,7 @@ services:
       placement:
         constraints: [ node.labels.worker2 == true ]
   flask:
-    image: simp24118/flask:1.4
+    image: simp24118/flask:1.6
     container_name: flask
     hostname: flask
     ports:
@@ -114,7 +114,7 @@ services:
       placement:
         constraints: [ node.labels.master == true ] 
   line:
-    image: simp24118/linebot:1.0
+    image: simp24118/linebot:1.1
     container_name: line
     hostname: line
     ports:
