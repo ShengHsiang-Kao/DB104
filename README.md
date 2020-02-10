@@ -1,5 +1,8 @@
 ## credit cards bot
 
+![image](https://github.com/ShengHsiang-Kao/DB104/blob/master/%E5%B0%88%E9%A1%8C%E6%9E%B6%E6%A7%8B.png)
+
+
 ## Task:
 Crews| -11/2 |
 ------|-------|
